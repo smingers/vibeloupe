@@ -1,7 +1,7 @@
 ---
 name: hypothesis-validator
 description: Use when the user says "validate my hypothesis", "test my idea", "I want to build X", "should I build this", "is there a market for this", "help me with customer development", "validate this problem", "how do I test this assumption", "I think people have a problem with", "I'm thinking of starting a company that", "help me do product discovery", "I have an idea", or describes an idea or problem they want to test before building.
-version: 0.1.0
+version: 0.2.3
 ---
 
 # Hypothesis Validator

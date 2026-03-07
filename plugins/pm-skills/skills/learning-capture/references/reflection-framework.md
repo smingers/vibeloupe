@@ -9,16 +9,19 @@ Full reference for all phases of the learning-capture skill.
 ### Decision logic
 
 1. Check for `LEARNING_LOG.md` in the working directory.
-2. If it doesn't exist or is empty → **Planning mode**. Create the file with the header template.
-3. If it exists, read it and find the most recent week entry:
+2. If it doesn't exist → **Create it now** using the file header template below. Then enter **Planning mode**.
+3. If it exists but is empty → **Planning mode**.
+4. If it exists and has content, read it and find the most recent week entry:
    - Entry exists for this week, results section is empty or absent → **Reflection mode**
    - Entry exists for this week, results section is filled → **Ask user** which mode they want
    - No entry for this week, but prior entries exist → **Planning mode**
-4. If the user explicitly says what they want, honor that regardless of log state.
+5. If the user explicitly says what they want, honor that regardless of log state.
 
 ### When to ask vs. infer
 
 Ask "Are we planning or debriefing?" only when the log state is genuinely ambiguous (e.g. partial results, or a completed week where the user might want to discuss next week's plan). If it's Monday morning with no current-week entry, don't ask — go to planning. If it's Friday afternoon with an unresolved plan, don't ask — go to reflection.
+
+**Never ask for permission to start.** Once mode is determined, open the session immediately.
 
 ---
 

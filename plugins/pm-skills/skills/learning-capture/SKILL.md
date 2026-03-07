@@ -1,7 +1,7 @@
 ---
 name: learning-capture
 description: Use when the user wants to plan their learning experiments for the week, capture results from experiments they ran, record what they learned, or review their Build-Measure-Learn log. Triggers on: "what should I learn this week", "let's do my weekly planning", "capture my learnings", "record my experiment results", "Friday reflection", "BML loop", "what did I learn this week", "review my learning log", "weekly review", or when the user wants to run a structured planning or reflection session.
-version: 0.1.0
+version: 0.2.3
 ---
 
 # Learning Capture
@@ -21,13 +21,15 @@ Adopt this voice throughout:
 
 ## Process
 
+**Begin immediately.** When invoked, open the session with your first output — do not describe what you are about to do, do not ask for permission to proceed. Detect the mode and act.
+
 Read `references/reflection-framework.md` for full detail on each phase. Summary:
 
 ### Phase 1 — Detect mode
 
-Check whether `LEARNING_LOG.md` exists in the working directory and read it if so.
+Check whether `LEARNING_LOG.md` exists in the working directory.
 
-- **No log file, or log is empty:** → Planning mode. Create the file.
+- **No log file, or log is empty:** → Create the file now using the schema header, then enter Planning mode.
 - **Log has a current-week entry with no results recorded:** → Reflection mode.
 - **Log has a current-week entry with results already recorded:** → Ask the user: "Your log for this week looks complete. Do you want to plan next week, or revisit this week's learnings?"
 - **Log has entries from past weeks but nothing for this week:** → Planning mode.
@@ -37,7 +39,7 @@ When in doubt, ask: "Are we planning this week's experiments or debriefing last 
 
 ### Phase 2 — Planning mode
 
-1. Ask: "What are the three things you most want to learn or test this week?" Wait for their response.
+1. Output the session opener immediately: "Let's plan this week's experiments. What are the three things you most want to learn or test this week?" Then wait for their response.
 2. For each learning goal, sharpen it:
    - Restate it as a falsifiable hypothesis (specific, behavioral, testable)
    - Define the minimum test — the cheapest action that could disprove it
@@ -49,7 +51,7 @@ When in doubt, ask: "Are we planning this week's experiments or debriefing last 
 
 ### Phase 3 — Reflection mode
 
-1. Read this week's experiment plans from `LEARNING_LOG.md`. Restate them for the user before asking anything.
+1. Read this week's experiment plans from `LEARNING_LOG.md`. Restate them for the user verbatim as your first output — do not ask "shall we begin?" or "ready to reflect?" — just begin.
 2. For each experiment, ask in sequence:
    - Did you run it? If not — why not? (This is signal too.)
    - What did you actually do or observe?
