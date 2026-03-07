@@ -9,7 +9,7 @@
     {
       "name": "pm-skills",
       "description": "Suite of Product Management skills to identify hypotheses, risks, potential solutions, helping you learn and ship faster.",
-      "version": "0.2.2",
+      "version": "0.2.3",
       "author": {
         "name": "Jordan Berman"
       },
