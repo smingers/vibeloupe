@@ -1,6 +1,6 @@
 # Reflection Framework
 
-Full reference for all phases of the learning-capture skill.
+Full reference for all phases of the learn-loop skill.
 
 ---
 

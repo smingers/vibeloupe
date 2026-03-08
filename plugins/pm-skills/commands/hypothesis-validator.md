@@ -69,7 +69,7 @@ After the test plan, ask:
 
 "Want me to add Experiment 1 to your Learning Log as this week's experiment? Or load the full test sequence as a multi-week plan?"
 
-If the user says yes to either: write to `LEARNING_LOG.md` using the weekly entry schema from the learning-capture skill's reflection framework. Use the Monday of the current week as the date header. If the file doesn't exist, create it with the standard header first.
+If the user says yes to either: write to `LEARNING_LOG.md` using the weekly entry schema from the learn-loop skill's reflection framework. Use the Monday of the current week as the date header. If the file doesn't exist, create it with the standard header first.
 
 ---
 

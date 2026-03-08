@@ -3,7 +3,7 @@ description: Run a weekly Build-Measure-Learn session. Plans this week's learnin
 argument-hint: "[Optional: 'plan' to start a planning session, 'reflect' to start a reflection session, or leave blank to auto-detect from your log]"
 ---
 
-Read the file at `plugins/pm-skills/skills/learning-capture/references/reflection-framework.md` in full before proceeding.
+Read the file at `plugins/pm-skills/skills/learn-loop/references/reflection-framework.md` in full before proceeding.
 
 Your input is: $ARGUMENTS
 
