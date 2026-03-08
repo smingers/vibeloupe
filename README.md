@@ -24,33 +24,14 @@ Runs a weekly Build-Measure-Learn session. In planning mode, sharpens your learn
 **Requires:** [Claude Code](https://claude.ai/code) (CLI)
 
 ```bash
-# Clone the repo into your project
-git clone https://github.com/jordanberman/true-north-skills.git
+# Add this marketplace
+claude plugin marketplace add smingers/true-north-skills
 
-# Install the plugin from the local path
-claude plugin install ./true-north-skills/plugins/pm-skills
+# Install the plugin
+claude plugin install pm-skills@true-north-skills
 ```
 
 Once installed, the three slash commands are available in any Claude Code session.
-
-### Optional: Supabase sync (for `/learn-loop`)
-
-If you want your `LEARNING_LOG.md` to sync across machines or sessions:
-
-1. Create a Supabase project and run the schema:
-   ```bash
-   # Apply the database schema
-   psql <your-supabase-connection-string> -f plugins/pm-skills/scripts/supabase-schema.sql
-   ```
-
-2. Copy the env file and fill in your credentials:
-   ```bash
-   cp plugins/pm-skills/scripts/.env.example plugins/pm-skills/scripts/.env
-   ```
-
-3. The sync hooks are already configured in `.claude/settings.json` — they'll run automatically at session start and after any log write.
-
-Without Supabase, `/learn-loop` works fine — it just writes locally to `LEARNING_LOG.md`.
 
 ---
 
