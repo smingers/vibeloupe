@@ -1,7 +1,7 @@
 ---
 name: prd-analyzer
 description: This skill should be used when the user asks to "analyze this PRD", "review my PRD", "pressure-test this PRD", "critique this product spec", "give me feedback on this PRD", "analyze this product requirements document", or pastes a PRD or product spec and asks for analysis, feedback, or review. Provides sharp, opinionated strategic analysis of PRDs using an 8-section analytical framework.
-version: 0.2.3
+version: 0.2.4
 ---
 
 # PRD Analyzer

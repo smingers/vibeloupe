@@ -1,10 +1,10 @@
 ---
-name: learning-capture
+name: learn-loop
 description: Use when the user wants to plan their learning experiments for the week, capture results from experiments they ran, record what they learned, or review their Build-Measure-Learn log. Triggers on: "what should I learn this week", "let's do my weekly planning", "capture my learnings", "record my experiment results", "Friday reflection", "BML loop", "what did I learn this week", "review my learning log", "weekly review", or when the user wants to run a structured planning or reflection session.
-version: 0.2.3
+version: 0.2.4
 ---
 
-# Learning Capture
+# Learn Loop
 
 Guide the user through a structured weekly Build-Measure-Learn cycle. Either plan this week's learning experiments with precision, or debrief last week's experiments with honesty. Write everything to `LEARNING_LOG.md` so the record persists.
 

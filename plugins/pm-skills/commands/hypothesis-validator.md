@@ -63,6 +63,14 @@ Key rules:
 - Do not include an experiment if the one before it would already give a definitive answer
 - Stop the test sequence when a working product becomes the only remaining test — you are not designing a product roadmap
 
+### Step 6: Bridge to the learning log
+
+After the test plan, ask:
+
+"Want me to add Experiment 1 to your Learning Log as this week's experiment? Or load the full test sequence as a multi-week plan?"
+
+If the user says yes to either: write to `LEARNING_LOG.md` using the weekly entry schema from the learn-loop skill's reflection framework. Use the Monday of the current week as the date header. If the file doesn't exist, create it with the standard header first.
+
 ---
 
 ## Rules

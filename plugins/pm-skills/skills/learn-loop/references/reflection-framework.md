@@ -1,6 +1,6 @@
 # Reflection Framework
 
-Full reference for all phases of the learning-capture skill.
+Full reference for all phases of the learn-loop skill.
 
 ---
 
@@ -27,13 +27,13 @@ Ask "Are we planning or debriefing?" only when the log state is genuinely ambigu
 
 ## Phase 2 — Planning Mode
 
-### Step 1: Elicit the three learning goals
+### Step 1: Elicit the learning goals
 
-Ask: "What are the three things you most want to learn or test this week?"
+Ask: "What are the most important things you want to learn or test this week? Give me 1 to 3 — if one bet is big enough to own the week, that's fine."
 
 Wait for their response. Do not generate suggestions. The user's goals must come from them — your job is to sharpen them, not invent them.
 
-If they give you fewer than three, ask: "What's the third?" If they give you more than three, ask: "If you could only pick three, which have the most riding on them this week?"
+If they give you more than three, ask: "If you could only pick three, which have the most riding on them this week?"
 
 ### Step 2: Sharpen each goal into an experiment
 
@@ -71,9 +71,9 @@ Ask: "How long will this actually take?" If the answer is more than a day for a 
 
 ### Step 3: Surface the upstream assumption
 
-After all three experiments are defined, step back:
+After all experiments are defined, step back:
 
-"Here's a question before we lock this in: is there a single belief that, if it turned out to be wrong, would make all three of these experiments pointless? Something you're assuming is true that you haven't actually tested?"
+"Here's a question before we lock this in: is there a single belief that, if it turned out to be wrong, would make all of these experiments pointless? Something you're assuming is true that you haven't actually tested?"
 
 Common upstream assumptions:
 - "The problem is real and painful" (often assumed before any interviews)
@@ -89,12 +89,12 @@ If the upstream assumption is more urgent than any of the three experiments, say
 
 ### Step 1: Re-anchor
 
-Before asking anything, restate the week's three hypotheses from the log:
+Before asking anything, restate all planned experiments from the log:
 
 "Here's what you planned to test this week:
 1. [Hypothesis 1] — Pass if [criterion]
-2. [Hypothesis 2] — Pass if [criterion]
-3. [Hypothesis 3] — Pass if [criterion]
+[2. [Hypothesis 2] — Pass if [criterion]]
+[3. [Hypothesis 3] — Pass if [criterion]]
 
 Let's go through each one."
 
@@ -170,7 +170,7 @@ A running record of weekly Build-Measure-Learn cycles.
 
 ### Weekly entry format
 
-Each week gets one entry block, appended to the bottom of the file. Never edit prior entries.
+Each week gets one entry block, appended to the bottom of the file. Never edit prior entries. Include 1–3 experiments per week — whatever the user committed to. Do not pad to three if fewer were planned.
 
 ```markdown
 ## Week of [YYYY-MM-DD]
@@ -184,21 +184,9 @@ Each week gets one entry block, appended to the bottom of the file. Never edit p
 - Fail: [Observable outcome that challenges or kills]
 - Time estimate: [Hours]
 
-**Experiment 2: [Short name]**
-- Hypothesis: ...
-- Minimum test: ...
-- Pass: ...
-- Fail: ...
-- Time estimate: ...
+[Repeat for each additional experiment, numbered sequentially]
 
-**Experiment 3: [Short name]**
-- Hypothesis: ...
-- Minimum test: ...
-- Pass: ...
-- Fail: ...
-- Time estimate: ...
-
-**Upstream assumption to watch:** [The one belief that could make all three experiments moot]
+**Upstream assumption to watch:** [The one belief that could make all experiments this week moot]
 
 ---
 
@@ -211,19 +199,7 @@ Each week gets one entry block, appended to the bottom of the file. Never edit p
 - Updated belief: [Restated hypothesis or new belief]
 - Next step: [Carry forward / Pivot to X / Abandon]
 
-**Experiment 2: [Short name]**
-- Ran: ...
-- Observed: ...
-- Verdict: ...
-- Updated belief: ...
-- Next step: ...
-
-**Experiment 3: [Short name]**
-- Ran: ...
-- Observed: ...
-- Verdict: ...
-- Updated belief: ...
-- Next step: ...
+[Repeat for each additional experiment]
 
 **Key learning this week:** [One sentence — what you now believe that you didn't before]
 
@@ -259,14 +235,10 @@ Pass: [Specific observable outcome]
 Fail: [Specific observable outcome]
 Time: [Estimate]
 
-**Experiment 2: [Name]**
-...
-
-**Experiment 3: [Name]**
-...
+[Repeat for each additional experiment, numbered sequentially — 1 to 3 total]
 
 ### ⚠️ UPSTREAM ASSUMPTION TO WATCH
-[One belief that, if wrong, makes all three experiments moot]
+[One belief that, if wrong, makes all this week's experiments moot]
 ```
 
 ### Reflection session
@@ -283,11 +255,7 @@ Verdict: [Confirm / Challenge / Complicate]
 Updated belief: [What you now think]
 Next: [Carry forward / Pivot to X / Abandon]
 
-**Experiment 2: [Name]**
-...
-
-**Experiment 3: [Name]**
-...
+[Repeat for each additional experiment]
 
 ### 💡 KEY LEARNING THIS WEEK
 [One sentence]

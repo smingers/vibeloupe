@@ -1,0 +1,14 @@
+{
+  "name": "learning-capture-sync",
+  "version": "1.0.0",
+  "description": "Hook scripts for syncing LEARNING_LOG.md with Supabase",
+  "private": true,
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "push": "node sync-log-push.js",
+    "pull": "node sync-log-pull.js"
+  },
+  "dependencies": {}
+}

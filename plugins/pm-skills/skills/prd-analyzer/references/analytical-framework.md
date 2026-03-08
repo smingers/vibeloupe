@@ -199,20 +199,34 @@ Forget the PRD's targets. Based on what you've read, what's actually likely to h
 
 ---
 
-## 8. TOP 3 RECOMMENDATIONS
+## 8. HYPOTHESES TO TEST
 
-List exactly 3. Each must be:
-- Specific enough to be assignable to a person
-- Doable within one week (not "talk to more customers")
-- Framed as: what to do, who owns it, and why it matters now
+Surface the 2-3 beliefs this plan lives or dies on — the ones where, if wrong, the whole thing collapses or changes shape. These are not the interesting-but-optional questions; they are the load-bearing ones.
 
-Order by impact. Do not add a conclusion after these.
+For each:
+- State it as a falsifiable hypothesis using this template: "We believe [specific outcome] will happen when [specific action or condition], and we'll know it's true when [observable evidence]."
+- Score it: Likelihood of being wrong (1–3) × Consequence if wrong (1–3) = Risk score (max 9). Only surface hypotheses with a risk score ≥ 4.
+- Name the minimum experiment to test it this week — something observable, not just "think about it more."
+- State a pass and a fail condition.
+
+Order by risk score (highest first). These are ready to be loaded into a learning log as this week's experiments.
+
+Do not add a conclusion after these.
 
 ### Output format:
 
 ```
-### ✅ TOP 3 RECOMMENDATIONS
-1. **[Action]** — [Who owns it] — [Why now, 1 sentence]
-2. **[Action]** — [Who owns it] — [Why now, 1 sentence]
-3. **[Action]** — [Who owns it] — [Why now, 1 sentence]
+### 🧪 HYPOTHESES TO TEST
+
+**Hypothesis 1: [Short name]** — Risk score: [X/9]
+We believe [X] will happen when [Y], and we'll know it's true when [Z].
+Minimum test: [Specific, doable-this-week experiment]
+Pass: [Observable outcome that confirms]
+Fail: [Observable outcome that challenges or kills]
+
+**Hypothesis 2: [Short name]** — Risk score: [X/9]
+We believe [X] will happen when [Y], and we'll know it's true when [Z].
+Minimum test: [Specific, doable-this-week experiment]
+Pass: [Observable outcome that confirms]
+Fail: [Observable outcome that challenges or kills]
 ```
