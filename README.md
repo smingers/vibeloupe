@@ -24,11 +24,11 @@ Runs a weekly Build-Measure-Learn session. In planning mode, sharpens your learn
 **Requires:** [Claude Code](https://claude.ai/code) (CLI)
 
 ```bash
-# Clone the repo into your project
-git clone https://github.com/jordanberman/true-north-skills.git
+# Add this marketplace
+claude plugin marketplace add smingers/true-north-skills
 
-# Install the plugin from the local path
-claude plugin install ./true-north-skills/plugins/pm-skills
+# Install the plugin
+claude plugin install pm-skills@true-north-skills
 ```
 
 Once installed, the three slash commands are available in any Claude Code session.
