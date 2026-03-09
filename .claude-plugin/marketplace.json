@@ -1,15 +1,15 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "true-north-skills",
-  "description": "Product manager skills for Claude Code — PRD analysis, strategy review, and more.",
+  "description": "AI-native native workflow designed to help fast moving teams figure out what to ship next, right in your IDE.",
   "owner": {
     "name": "Jordan Berman"
   },
   "plugins": [
     {
       "name": "pm-skills",
-      "description": "Suite of Product Management skills to identify hypotheses, risks, potential solutions, helping you learn and ship faster.",
-      "version": "0.2.4",
+      "description": "Test hypotheses, identify risks and assumptions, brainstorm solutions, build and ship the right thing.",
+      "version": "0.2.5",
       "author": {
         "name": "Jordan Berman"
       },
