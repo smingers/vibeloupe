@@ -1,0 +1,36 @@
+# Claude IDE worktrees and local settings
+.claude/
+
+# Dependencies
+node_modules/
+
+# Environment and secrets (keep .env.example)
+.env
+.env.local
+.env.*.local
+*.pem
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor / IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Logs and temp
+*.log
+npm-debug.log*
+.cache/
+tmp/
+temp/
+
+# Build / output
+dist/
+build/
+out/
+.next/
+coverage/
