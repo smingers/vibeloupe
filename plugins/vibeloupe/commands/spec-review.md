@@ -3,37 +3,47 @@ description: "Analyze any plan, idea doc, or strategy with sharp opinionated fee
 argument-hint: "[paste your plan, idea, or doc — or leave blank to be prompted]"
 ---
 
-# Plan Analyzer
+Read `../skills/spec-review/references/analytical-framework.md` in full before proceeding.
 
-Adopt this persona for the entire analysis: a sharp, opinionated product strategist who thinks like a founder who has killed their own darlings and a VP of Product who has shipped at scale. Find the gaps the author can't see because they're too close. Say what you actually think — hedging helps nobody. Tone is direct but collegial.
+The plan or document to analyze: $ARGUMENTS
 
-## Input
+If nothing was provided, ask the user to paste their plan before proceeding.
 
-The plan or idea to analyze is provided below as arguments. This can be anything: a PRD, a rough idea, a design doc, a business plan sketch, or a strategy writeup. If nothing was provided (arguments are empty), ask the user to paste their plan now before proceeding.
+## Workflow
 
-**Arguments:** $ARGUMENTS
+### 1. Bootstrap
 
-## Instructions
+Check if `.vibeloupe/prd-reviews.json` exists in the working directory.
+- **Does not exist:** create it now with `[]`. Continue.
+- **Exists:** read it. If the same team or product area appears in prior reviews, note any recurring weaknesses before proceeding.
 
-Read the full `../skills/spec-review/references/analytical-framework.md` for the complete details of each analytical lens and the exact output format required for each section.
+### 2. Analyze
 
-Then analyze the plan using all 8 lenses in order:
+Work through all 8 lenses in order using the frameworks in the **spec-review** skill and the analytical framework reference. Complete all 8 lenses before writing any output.
 
-1. Argument Chain Analysis — rate each logical link; call out the weakest
-2. Jobs to Be Done Reframe — is the plan solving the real job or an adjacent one?
-3. Hidden Assumptions Audit — surface the 2-3 load-bearing assumptions; propose this-week tests
-4. Motivated Reasoning Flags — scan for 8 bias patterns; flag only those present
-5. Conviction vs. Evidence Check — find mismatches between confidence and evidence strength
-6. Moonshot Alternatives — name 1-2 fundamentally different approaches to the same problem
-7. Pre-Mortem — most likely outcome, success mechanisms, failure narratives, 30-day watchpoints
-8. Hypotheses to Test — the 2-3 beliefs this plan lives or dies on, as falsifiable experiments ready for the learning log
+1. Argument Chain Analysis
+2. Jobs to Be Done Reframe
+3. Hidden Assumptions Audit
+4. Motivated Reasoning Flags
+5. Conviction vs. Evidence Check
+6. Moonshot Alternatives
+7. Pre-Mortem
+8. Top 3 Recommendations
 
-**Critical rules:**
+### 3. Output
+
+Produce the analysis using the exact output headers from the **spec-review** skill. Target 800–1200 words. A strong plan earns a shorter analysis.
+
+### 4. Save and follow up
+
+Append a record to `.vibeloupe/prd-reviews.json` using the PRD review schema from the **spec-review** skill. Read the file, parse the array, append, write back.
+
+Then ask: "Want to save the riskiest assumption to `.vibeloupe/experiments.json` as this week's experiment? Or run /hypothesis-validator on it first to build a full test plan?" If yes, append an experiment record using the experiment schema from the **hypothesis-validator** skill, with `created_by` set to `"spec-review"`.
+
+## Rules
+
 - Never comment on formatting or template compliance
-- Never rewrite sections of the plan — identify weakness, don't fix it
+- Never rewrite sections — identify weakness, don't fix it
 - Every insight must pass: "Would this change what the person does this week?" If not, cut it
-- Do not invent percentages — use the plan's own numbers against it where appropriate
-- Target 800–1200 words total. A strong plan earns a shorter analysis
-- Use the exact section headers and output format specified in the analytical framework reference
-
-**After the analysis:** Ask the user: "Want to save the riskiest hypothesis to `.vibeloupe/experiments.json` as this week's experiment? Or run /hypothesis-validator on it first to build a full test plan?" If they say yes, append a record using the schema in `../skills/hypothesis-validator/SKILL.md` (Write to Data section), with `created_by` set to `"spec-review"`.
+- Do not invent percentages — use the document's own numbers against it
+- If a section has no issues, say so briefly and move on

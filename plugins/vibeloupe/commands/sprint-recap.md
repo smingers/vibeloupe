@@ -1,31 +1,57 @@
 ---
-description: "Analyze the last 7 days of git commits and produce a user-centric weekly report"
+description: Use when the user wants to understand what the team built or worked on recently, get a weekly summary of git activity, reconstruct the team's goals from recent commits, or produce a changelog from a product perspective. Triggers on phrases like "what did we ship this week", "sprint recap", "week in review", "summarize our commits", "what was the team working on", "what changed this week", "generate a changelog", "what did we build", "show me recent progress", or any request to understand recent engineering work through a user or product lens. Use this whenever someone asks about recent work or recent changes in a project — even if they don't say "sprint" or "git".
 argument-hint: "[optional: time range, e.g. 'last 2 weeks' or 'since March 1']"
 ---
 
 # Sprint Recap
 
-Analyze recent git commits and produce a clear, user-centric report. Reconstruct what the team was working on and why — not just what files changed.
-
-## Input
-
-A time range may be provided as arguments. If none is given, default to the last 7 days.
+A time range may be provided as arguments. If none, default to last 7 days.
 
 **Arguments:** $ARGUMENTS
 
-## Instructions
+## Workflow
 
-Read `../skills/sprint-recap/SKILL.md` and execute it exactly as written — do not skip any phase.
+### 1. Bootstrap
 
-Critical phases that must not be skipped:
+Check if `.vibeloupe/sprints.json` exists in the working directory.
+- **Does not exist:** create it now with `[]`. Continue.
+- **Exists:** read it. Scan for patterns across prior sprints (e.g. repeated internally-focused weeks, recurring problem areas).
 
-**Bootstrap (before anything else):**
-- Check for `.vibeloupe/sprints.json` — create with `[]` if missing, read for prior patterns if it exists
-- Check for `.vibeloupe/experiments.json` — read it and extract all experiments with `status` of `"untested"` or `"running"` for use in Phase 5.5
+Check if `.vibeloupe/experiments.json` exists.
+- **Does not exist:** note that no experiments exist. Continue.
+- **Exists:** read it. Extract all experiments where `status` is `"untested"` or `"running"`. Keep them in context for step 5.
 
-**Phase 5.5 — Cross-reference open experiments:**
-- After inferring the problem being solved, compare the sprint's work against every open experiment
-- Surface which experiments this sprint advances, and which are drifting
+### 2. Gather data
 
-**Write to Data (after producing the report):**
-- Append a record to `.vibeloupe/sprints.json` including `linked_experiment_ids` for any experiments rated Advances
+Confirm you're in a git repo first. Run:
+
+```bash
+git log --since="7 days ago" --pretty=format:"%h %s"
+git log --since="7 days ago" --pretty=format:"=== %h %s" --stat
+git log --since="7 days ago" --pretty=format: --name-only | grep -v '^$' | sort | uniq -c | sort -rn | head -15
+git log --since="7 days ago" --pretty=format:"%an" | sort | uniq -c | sort -rn
+```
+
+Substitute `--since` for any non-default time window. If zero commits, say so and offer to widen the range.
+
+### 3. Classify and map
+
+Classify each commit using the commit type table in the **sprint-recap** skill. Map the most-touched directories to user-facing product areas using the directory map in the skill.
+
+### 4. Infer the problem being solved
+
+Step back from individual commits. What underlying problem does this week's work suggest the team is solving? Use the inference methodology in the **sprint-recap** skill. Be direct — if the work looks internally focused, say so.
+
+### 5. Cross-reference open experiments
+
+If no open experiments exist, skip this step.
+
+Compare the sprint's inferred problem and user-facing commits against each open experiment's hypothesis. Use the alignment methodology in the **sprint-recap** skill. Classify each as Advances, Tangential, or No connection — surface only Advances and stale No-connection entries (2+ weeks old).
+
+### 6. Select and report
+
+From New Feature and Bug Fix / Improvement commits only, pick the 3–5 most functionally significant. Output the report using the exact format from the **sprint-recap** skill.
+
+### 7. Save
+
+Append a record to `.vibeloupe/sprints.json` using the sprint schema from the **sprint-recap** skill. Read the file, parse the array, append, write back.

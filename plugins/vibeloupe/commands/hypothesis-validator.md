@@ -3,80 +3,42 @@ description: Validate a problem or solution hypothesis with a rigorous, opiniona
 argument-hint: "[Your idea, problem, or hypothesis — as much or as little detail as you have]"
 ---
 
-Read the file at `plugins/vibeloupe/skills/hypothesis-validator/references/validation-framework.md` in full before proceeding.
+Read `../skills/hypothesis-validator/references/validation-framework.md` in full before proceeding.
 
 Your input is: $ARGUMENTS
 
----
+## Workflow
 
-## Instructions
+### 1. Bootstrap
 
-You are a customer development practitioner helping the user design a rigorous test plan. Your goal is to find the fastest, cheapest experiment that could **falsify** their hypothesis — surviving that is what validation actually means.
+Check if `.vibeloupe/experiments.json` exists in the working directory.
+- **Does not exist:** create it now with `[]`. Continue.
+- **Exists:** read it. If prior experiments touch the same problem space or customer segment, surface that context before proceeding.
 
-Work through the following steps in order.
+### 2. Parse the input
 
-### Step 1: Parse the input
+Scan `$ARGUMENTS` for the five signal dimensions (problem, customer, solution, evidence, stakes) described in the validation framework.
 
-Scan `$ARGUMENTS` for the five signal dimensions described in the validation framework:
-1. Problem signal
-2. Customer signal
-3. Solution signal
-4. Evidence signal
-5. Stakes signal
+### 3. Clarify if needed
 
-Note which are present, which are weakly implied, and which are absent.
+- **4–5 dimensions present:** skip to step 4.
+- **2–3 present:** ask only about the gaps — max 3 questions. Wait for the response before continuing.
+- **0–1 present:** ask 4–5 targeted questions from the question bank in the validation framework. Wait for the response.
 
-### Step 2: Determine mode and act
+Never ask about dimensions already answered in the input.
 
-**If 4–5 dimensions are present or clearly implied:**
-Proceed directly to Step 4 (hypothesis crystallization). Do not ask clarifying questions.
+### 4. Crystallize the hypothesis
 
-**If 2–3 dimensions are present:**
-Ask only the questions needed to fill the specific gaps — maximum 3 questions. State upfront that you have enough to start but need a few things to sharpen it. Then wait for the user's response before proceeding to Step 4.
+Restate what the user is trying to prove in precise, falsifiable form using the hypothesis templates in the **hypothesis-validator** skill. Surface the top 2–3 riskiest assumptions using the risk scoring method in the skill. Only surface assumptions with a risk score of 4 or higher.
 
-**If 0–1 dimensions are present:**
-Tell the user you need a bit more context to build a useful plan, then ask 4–5 targeted questions from the question bank in the framework. Wait for their response before proceeding.
+If the user is testing a solution before the problem is validated, say so and reorder.
 
-### Step 3: Receive clarification
+### 5. Output the test plan
 
-After asking questions, stop. Wait for the user's answers. Do not pre-generate the test plan. The plan must reflect what you actually learn in Step 3.
+Produce the test plan using the exact output headers from the **hypothesis-validator** skill. Pick one recommended first experiment — argue for it specifically. For any experiment involving customer interviews, include Mom Test coaching from the validation framework.
 
-### Step 4: Crystallize the hypothesis
+### 6. Save the experiment
 
-Before designing any experiments, restate what the user is trying to prove in precise, falsifiable form using the templates in the framework:
-- If they are validating a **problem**: use the problem hypothesis template
-- If they are validating a **solution**: use the solution hypothesis template
-- If both are in scope: state the problem hypothesis first, then the solution hypothesis. Note that the solution hypothesis should only be tested after the problem hypothesis is directionally confirmed.
+Ask: "Want me to save Experiment 1 to `.vibeloupe/experiments.json`? Or load the full test sequence as a multi-week plan?"
 
-Then surface the top 2–3 riskiest assumptions using the risk scoring method from the framework (likelihood of being wrong × consequence if wrong). Only surface assumptions with a risk score of 4 or higher.
-
-If the user is trying to validate a solution before validating the problem exists, say so plainly and explain why that's the order that matters.
-
-### Step 5: Output the test plan
-
-Produce the full test plan output using the exact headers and format from the framework. Follow all formatting templates precisely.
-
-Key rules:
-- Pick ONE recommended first experiment and argue for it specifically — do not present options and let the user choose
-- For any experiment that involves customer interviews, include Mom Test coaching: the specific questions to ask, what strong vs. weak signal looks like, and what commitment to ask for at the end
-- Every experiment must have an explicit pass criterion and an explicit fail criterion
-- Do not include an experiment if the one before it would already give a definitive answer
-- Stop the test sequence when a working product becomes the only remaining test — you are not designing a product roadmap
-
-### Step 6: Save to experiments
-
-After the test plan, ask:
-
-"Want me to save Experiment 1 to `.vibeloupe/experiments.json` as this week's experiment? Or load the full test sequence as a multi-week plan?"
-
-If the user says yes to either: briefly explain — "I'll append this to `.vibeloupe/experiments.json` in this repo, a structured record of all your experiments that the other vibeloupe skills read from. You'll see a file write request you can approve." Then append one experiment record per experiment using the schema in `../skills/hypothesis-validator/SKILL.md` (the Write to Data section). If the file doesn't exist, create it with `[]` first.
-
----
-
-## Rules
-
-- Do not output a test plan before you have enough signal to crystallize a falsifiable hypothesis
-- Do not ask questions that the user has already answered in their input
-- If the user asks "is my idea good?" redirect — your job is to design the test that answers that, not to pre-judge the idea
-- Do not hedge on which experiment to run first — one recommendation, clearly argued
-- If the user describes an implausibly large market or implausibly fast timeline, flag it — calibration is part of the job
+If yes: briefly explain that `.vibeloupe/experiments.json` is the structured experiment record that all vibeloupe skills share — a file write request will appear. Then append one record per experiment using the experiment schema from the **hypothesis-validator** skill. Read the file, parse the array, append, write back.
