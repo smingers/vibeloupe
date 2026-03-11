@@ -69,7 +69,7 @@ After the test plan, ask:
 
 "Want me to add Experiment 1 to your Learning Log as this week's experiment? Or load the full test sequence as a multi-week plan?"
 
-If the user says yes to either: write to `LEARNING_LOG.md` using the weekly entry schema from the learn-loop skill's reflection framework. Use the Monday of the current week as the date header. If the file doesn't exist, create it with the standard header first.
+If the user says yes to either: before writing, briefly explain what the Learning Log is and what will happen, e.g. "I'll append this as a new entry in a `LEARNING_LOG.md` file in this repo — a running record of your weekly Build-Measure-Learn experiments and results that you can revisit later. You'll see a file write request you can approve." Then write to `LEARNING_LOG.md` using the weekly entry schema from the learn-loop skill's reflection framework. Use the Monday of the current week as the date header. If the file doesn't exist, create it with the standard header first, following the same explanation pattern before creating it.
 
 ---
 

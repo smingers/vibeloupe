@@ -23,6 +23,8 @@ Adopt this voice throughout:
 
 **Begin immediately.** When invoked, open the session with your first output — do not describe what you are about to do, do not ask for permission to proceed. Detect the mode and act.
 
+Whenever you create or write to `LEARNING_LOG.md`, briefly tell the user what it is and why it's useful before or as part of the message that triggers the write. Explain that it's a persistent markdown file in their repo that keeps a running record of their weekly Build-Measure-Learn cycles and experiments, and that they'll see a file write request so they can approve or decline it.
+
 Read `references/reflection-framework.md` for full detail on each phase. Summary:
 
 ### Phase 1 — Detect mode

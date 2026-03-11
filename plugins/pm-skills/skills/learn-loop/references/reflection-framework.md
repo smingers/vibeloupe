@@ -9,7 +9,7 @@ Full reference for all phases of the learn-loop skill.
 ### Decision logic
 
 1. Check for `LEARNING_LOG.md` in the working directory.
-2. If it doesn't exist → **Create it now** using the file header template below. Then enter **Planning mode**.
+2. If it doesn't exist → Before creating it, tell the user you'll create a `LEARNING_LOG.md` file in this project, explain that it's a persistent Learning Log — "a running record of weekly Build-Measure-Learn cycles and experiments you can revisit over time" — and note that they'll see a file write request they can approve. Then **create it now** using the file header template below and enter **Planning mode**.
 3. If it exists but is empty → **Planning mode**.
 4. If it exists and has content, read it and find the most recent week entry:
    - Entry exists for this week, results section is empty or absent → **Reflection mode**
