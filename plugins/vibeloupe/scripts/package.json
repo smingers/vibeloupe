@@ -1,14 +1,14 @@
 {
-  "name": "learning-capture-sync",
+  "name": "vibeloupe-sync",
   "version": "1.0.0",
-  "description": "Hook scripts for syncing LEARNING_LOG.md with Supabase",
+  "description": "Hook scripts for syncing .vibeloupe/experiments.json with Supabase",
   "private": true,
   "engines": {
     "node": ">=18"
   },
   "scripts": {
-    "push": "node sync-log-push.js",
-    "pull": "node sync-log-pull.js"
+    "push": "node sync-experiments-push.js",
+    "pull": "node sync-experiments-pull.js"
   },
   "dependencies": {}
 }

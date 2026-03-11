@@ -8,14 +8,14 @@ Full reference for all phases of the learn-loop skill.
 
 ### Decision logic
 
-1. Check for `LEARNING_LOG.md` in the working directory.
-2. If it doesn't exist → Before creating it, tell the user you'll create a `LEARNING_LOG.md` file in this project, explain that it's a persistent Learning Log — "a running record of weekly Build-Measure-Learn cycles and experiments you can revisit over time" — and note that they'll see a file write request they can approve. Then **create it now** using the file header template below and enter **Planning mode**.
-3. If it exists but is empty → **Planning mode**.
-4. If it exists and has content, read it and find the most recent week entry:
-   - Entry exists for this week, results section is empty or absent → **Reflection mode**
-   - Entry exists for this week, results section is filled → **Ask user** which mode they want
-   - No entry for this week, but prior entries exist → **Planning mode**
-5. If the user explicitly says what they want, honor that regardless of log state.
+1. Check for `.vibeloupe/experiments.json` in the working directory.
+2. If it doesn't exist → Tell the user you'll create `.vibeloupe/experiments.json` to track their experiments, then create it with `[]`. Enter **Planning mode**.
+3. If it exists but is an empty array → **Planning mode**.
+4. If it exists and has records, find entries where `week_of` matches the Monday of the current week:
+   - Entries for this week exist and all have `status: "untested"` → **Reflection mode**
+   - Entries for this week exist and all have `result` filled in → **Ask user** which mode they want
+   - No entries for this week, but prior entries exist → **Planning mode**
+5. If the user explicitly says what they want, honor that regardless of file state.
 
 ### When to ask vs. infer
 
@@ -156,66 +156,53 @@ Surface the pattern without judgment. Let the user decide what to do with it.
 
 ---
 
-## LEARNING_LOG.md Schema
+## Data Schema
 
-### File header (created once)
+All experiments are stored as records in `.vibeloupe/experiments.json` (an array).
 
-```markdown
-# Learning Log
+### New experiment record (planning session)
 
-A running record of weekly Build-Measure-Learn cycles.
-
----
+```json
+{
+  "id": "exp_[ISO timestamp without separators, e.g. 20260311T143022]",
+  "created_at": "[ISO 8601 datetime]",
+  "updated_at": "[ISO 8601 datetime]",
+  "created_by": "learn-loop",
+  "hypothesis": "[falsifiable hypothesis statement]",
+  "riskiest_assumption": "[the assumption most likely to make this experiment moot]",
+  "recommended_experiment": "[minimum test that could disprove the hypothesis; include time estimate as prose]",
+  "pass_fail_criterion": "[explicit pass and fail criteria]",
+  "status": "untested",
+  "week_of": "[ISO date of the Monday of the current week]",
+  "result": null,
+  "result_recorded_at": null,
+  "learnings": null,
+  "next_action": null,
+  "next_action_notes": null
+}
 ```
 
-### Weekly entry format
+### Reflection update (fields to set in-place by `id`)
 
-Each week gets one entry block, appended to the bottom of the file. Never edit prior entries. Include 1–3 experiments per week — whatever the user committed to. Do not pad to three if fewer were planned.
-
-```markdown
-## Week of [YYYY-MM-DD]
-
-### Plan
-
-**Experiment 1: [Short name]**
-- Hypothesis: We believe [X] will happen when [Y], and we'll know it's true when [Z].
-- Minimum test: [What specifically you will do]
-- Pass: [Observable outcome that confirms]
-- Fail: [Observable outcome that challenges or kills]
-- Time estimate: [Hours]
-
-[Repeat for each additional experiment, numbered sequentially]
-
-**Upstream assumption to watch:** [The one belief that could make all experiments this week moot]
-
----
-
-### Results
-
-**Experiment 1: [Short name]**
-- Ran: [Yes / No — if no: reason]
-- Observed: [Specific thing seen or heard]
-- Verdict: [Confirm / Challenge / Complicate]
-- Updated belief: [Restated hypothesis or new belief]
-- Next step: [Carry forward / Pivot to X / Abandon]
-
-[Repeat for each additional experiment]
-
-**Key learning this week:** [One sentence — what you now believe that you didn't before]
-
-**Pattern note:** [Optional — cross-week pattern if visible]
-
----
+```json
+{
+  "updated_at": "[ISO 8601 datetime]",
+  "status": "confirmed | invalidated | abandoned | skipped",
+  "result": "[what was actually observed]",
+  "result_recorded_at": "[ISO 8601 datetime]",
+  "learnings": "[updated belief — what changed and why]",
+  "next_action": "carry_forward | pivot | abandon",
+  "next_action_notes": "[brief reason for the recommendation]"
+}
 ```
 
-### Rules for writing to the log
+### Rules for writing to experiments.json
 
-- Use ISO date format for the week header: `Week of YYYY-MM-DD` (use the Monday of that week)
-- The Plan section is written at the end of a planning session
-- The Results section is written at the end of a reflection session
-- Never modify a prior week's entries
-- If an experiment was not run, still log it with "Ran: No" and the reason — do not silently omit it
-- The log must be writable by the skill — if it doesn't exist, create it with the file header first
+- `week_of` is always the Monday of the current week in ISO date format
+- Planning appends new records; reflection updates existing records in-place by `id`
+- A skipped experiment still gets updated: `status: "skipped"`, `result`: the reason it wasn't run
+- Never delete prior records — update status instead
+- If `.vibeloupe/` doesn't exist, create the directory and initialize `experiments.json` as `[]`
 
 ---
 
