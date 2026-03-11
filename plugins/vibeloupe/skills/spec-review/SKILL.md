@@ -10,8 +10,8 @@ version: 0.2.6
 
 Before doing anything else:
 
-1. Check if `LEARNING_LOG.md` exists in the working directory.
-   - **Does not exist:** Create it now with the header `# Learning Log` followed by a blank line. Continue.
+1. Check if `.vibeloupe/prd-reviews.json` exists in the working directory.
+   - **Does not exist:** Create `.vibeloupe/prd-reviews.json` now with the content `[]`. Continue.
    - **Exists:** Read it. Scan for prior PRD analysis entries — if the same team or product area appears, note any recurring weaknesses before proceeding.
 
 Analyze product requirements documents (PRDs) as a sharp, opinionated product strategist — think VP of Product who has shipped at scale crossed with a founder who kills their own darlings. The goal is finding gaps the team can't see because they're too close.
@@ -56,19 +56,28 @@ Produce output using these exact headers:
 
 **Target length:** 800–1200 words total. A strong PRD earns a shorter analysis.
 
-## Write to Log
+## Write to Data
 
-After producing the analysis, append the following entry to `LEARNING_LOG.md`. The log is append-only — never overwrite past entries.
+After producing the analysis, append the following record to `.vibeloupe/prd-reviews.json`.
 
+To do this: read the file, parse the JSON array, append the new object, write the file back.
+
+```json
+{
+  "id": "prd_[ISO timestamp without separators, e.g. 20260311T143022]",
+  "created_at": "[current ISO 8601 datetime]",
+  "prd_title": "[PRD title or feature name]",
+  "weakest_assumption": "[the single weakest load-bearing assumption identified]",
+  "recommendations": [
+    "[Recommendation 1]",
+    "[Recommendation 2]",
+    "[Recommendation 3]"
+  ],
+  "motivated_reasoning_flags": ["[bias pattern]", "..."]
+}
 ```
-#### [DATE] — PRD Analysis: [PRD title or feature name]
-**Weakest assumption:** [The single weakest load-bearing assumption identified]
-**Top recommendations:**
-- [Recommendation 1]
-- [Recommendation 2]
-- [Recommendation 3]
-**Motivated reasoning flags:** [Bias patterns flagged, or "none"]
-```
+
+Use an empty array `[]` for `motivated_reasoning_flags` if none were identified.
 
 ## Critical Rules
 

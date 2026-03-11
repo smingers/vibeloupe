@@ -10,9 +10,9 @@ version: 0.2.6
 
 Before doing anything else:
 
-1. Check if `LEARNING_LOG.md` exists in the working directory.
-   - **Does not exist:** Create it now with the header `# Learning Log` followed by a blank line. Continue.
-   - **Exists:** Read it. Scan for prior hypothesis entries — if the same problem space or customer segment has appeared before, surface that context before proceeding.
+1. Check if `.vibeloupe/experiments.json` exists in the working directory.
+   - **Does not exist:** Create `.vibeloupe/experiments.json` now with the content `[]`. Continue.
+   - **Exists:** Read it. Scan for prior experiment entries — if the same problem space or customer segment has appeared before, surface that context (hypothesis, outcome, learnings) before proceeding.
 
 Help founders, PMs, and product teams design a rigorous test plan for a problem hypothesis, solution hypothesis, or both — before writing a line of code or committing significant resources.
 
@@ -68,19 +68,31 @@ After clarification is complete, produce output using these exact headers:
 
 **Target length:** 600–1000 words. A tightly scoped hypothesis earns a shorter plan.
 
-## Write to Log
+## Write to Data
 
-After producing the test plan, append the following entry to `LEARNING_LOG.md`. The log is append-only — never overwrite past entries.
+After producing the test plan, append the following record to `.vibeloupe/experiments.json`.
 
+To do this: read the file, parse the JSON array, append the new object, write the file back.
+
+```json
+{
+  "id": "exp_[ISO timestamp without separators, e.g. 20260311T143022]",
+  "created_at": "[current ISO 8601 datetime]",
+  "updated_at": "[current ISO 8601 datetime]",
+  "created_by": "hypothesis-validator",
+  "hypothesis": "[one-line falsifiable hypothesis statement]",
+  "riskiest_assumption": "[the #1 riskiest assumption from Phase 4]",
+  "recommended_experiment": "[one sentence describing the recommended first experiment]",
+  "pass_fail_criterion": "[explicit decision criteria]",
+  "status": "untested",
+  "week_of": "[ISO date of the Monday of the current week]",
+  "result": null,
+  "result_recorded_at": null,
+  "learnings": null,
+  "next_action": null,
+  "next_action_notes": null
+}
 ```
-#### [DATE] — Hypothesis: [one-line hypothesis statement]
-**Riskiest assumption:** [The #1 riskiest assumption ranked in Phase 4]
-**Recommended first experiment:** [One sentence describing the experiment]
-**Pass/fail criterion:** [Explicit decision criteria]
-**Status:** untested
-```
-
-Update `Status` to `confirmed` or `invalidated` when the user returns with results.
 
 ## Critical Rules
 
