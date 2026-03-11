@@ -15,7 +15,7 @@ The plan or idea to analyze is provided below as arguments. This can be anything
 
 ## Instructions
 
-Read the full `../skills/prd-analyzer/references/analytical-framework.md` for the complete details of each analytical lens and the exact output format required for each section.
+Read the full `../skills/spec-review/references/analytical-framework.md` for the complete details of each analytical lens and the exact output format required for each section.
 
 Then analyze the plan using all 8 lenses in order:
 

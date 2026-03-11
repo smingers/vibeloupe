@@ -1,19 +1,19 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
-  "name": "true-north-skills",
-  "description": "AI-native native workflow designed to help fast moving teams figure out what to ship next, right in your IDE.",
+  "name": "vibeloupe",
+  "description": "AI-native workflow designed to help fast moving teams figure out what to ship next, right in your IDE.",
   "owner": {
     "name": "Jordan Berman"
   },
   "plugins": [
     {
-      "name": "pm-skills",
+      "name": "vibeloupe",
       "description": "Test hypotheses, identify risks and assumptions, brainstorm solutions, build and ship the right thing.",
-      "version": "0.2.5",
+      "version": "0.2.6",
       "author": {
         "name": "Jordan Berman"
       },
-      "source": "./plugins/pm-skills",
+      "source": "./plugins/vibeloupe",
       "category": "productivity"
     }
   ]

@@ -5,7 +5,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "node \"$(git rev-parse --show-toplevel)/plugins/pm-skills/scripts/sync-log-pull.js\" 2>/dev/null || true"
+            "command": "node \"$(git rev-parse --show-toplevel)/plugins/vibeloupe/scripts/sync-log-pull.js\" 2>/dev/null || true"
           }
         ]
       }
@@ -16,7 +16,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "node \"$(git rev-parse --show-toplevel)/plugins/pm-skills/scripts/sync-log-push.js\" 2>/dev/null || true"
+            "command": "node \"$(git rev-parse --show-toplevel)/plugins/vibeloupe/scripts/sync-log-push.js\" 2>/dev/null || true"
           }
         ]
       }

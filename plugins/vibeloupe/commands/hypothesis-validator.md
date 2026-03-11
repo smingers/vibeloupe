@@ -3,7 +3,7 @@ description: Validate a problem or solution hypothesis with a rigorous, opiniona
 argument-hint: "[Your idea, problem, or hypothesis — as much or as little detail as you have]"
 ---
 
-Read the file at `plugins/pm-skills/skills/hypothesis-validator/references/validation-framework.md` in full before proceeding.
+Read the file at `plugins/vibeloupe/skills/hypothesis-validator/references/validation-framework.md` in full before proceeding.
 
 Your input is: $ARGUMENTS
 

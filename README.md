@@ -4,7 +4,7 @@ LEARNING FAST >>> CODING FAST
 
 Vibeloupe is an IDE/dev tool-native workflow designed to help fast moving teams figure out what to ship next, how to measure success, and when to double-down or pivot. It's built to work with any AI-enabled coding apps. The more experiments you run over time, the smarter your team gets, the more you deliver what matters for your customers.
 
-The skills form a loop: **/hypothesis-validator** helps you design the right test before you build. **/learn-loop** tracks what you ran and what you actually learned. **/prd-analyzer** stress-tests a plan before you commit to it.
+The skills form a loop: **/hypothesis-validator** helps you design the right test before you build. **/learn-loop** tracks what you ran and what you actually learned. **/spec-review** stress-tests a plan before you commit to it.
 
 ---
 
@@ -17,7 +17,7 @@ The skills form a loop: **/hypothesis-validator** helps you design the right tes
 claude plugin marketplace add smingers/vibeloupe
 
 # Install the plugin
-claude plugin install pm-skills@vibeloupe
+claude plugin install vibeloupe
 ```
 
 Once installed, the three slash commands are available in any Claude Code session.
@@ -27,7 +27,7 @@ Once installed, the three slash commands are available in any Claude Code sessio
 ## Usage
 
 ```
-/prd-analyzer [paste your PRD or plan]
+/spec-review [paste your PRD or plan]
 /hypothesis-validator [describe your idea or problem]
 /learn-loop              # auto-detects planning vs. reflection based on your log
 /learn-loop plan         # force planning mode
@@ -38,7 +38,7 @@ Once installed, the three slash commands are available in any Claude Code sessio
 
 ## Skills
 
-### `/prd-analyzer`
+### `/spec-review`
 Sharp, opinionated feedback on any plan, PRD, or strategic document. Runs it through eight analytical lenses — argument chain, hidden assumptions, motivated reasoning, pre-mortem, moonshot alternatives, and more — then surfaces the top hypotheses worth testing before you proceed.
 
 ### `/hypothesis-validator`
