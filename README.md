@@ -1,8 +1,8 @@
-# true-north-skills
+# vibeloupe
 
 LEARNING FAST >>> CODING FAST
 
-True North is an IDE/dev tool native workflow designed to help fast moving teams figure out what to ship next, how to measure if it will succeed, and what lessons to learn from iteration to iteration. It's built to work with any AI-enabled coding apps. The more experiments you run over time, the smarter your team gets, the more you deliver what matters for your customers.
+Vibeloupe is an IDE/dev tool-native workflow designed to help fast moving teams figure out what to ship next, how to measure success, and when to double-down or pivot. It's built to work with any AI-enabled coding apps. The more experiments you run over time, the smarter your team gets, the more you deliver what matters for your customers.
 
 The skills form a loop: **/hypothesis-validator** helps you design the right test before you build. **/learn-loop** tracks what you ran and what you actually learned. **/prd-analyzer** stress-tests a plan before you commit to it.
 
