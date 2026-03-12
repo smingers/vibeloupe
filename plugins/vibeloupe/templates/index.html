@@ -58,8 +58,8 @@
     .drop-zone.drag-over { border-color: #666; background: #f0f0f0; }
     .hidden { display: none; }
     .meta { font-size: 0.8rem; color: #666; margin-top: 0.25rem; }
-    .recommendations { list-style: disc; margin-left: 1.25rem; }
-    .recommendations li { margin-bottom: 0.25rem; }
+    .list { list-style: disc; margin-left: 1.25rem; }
+    .list li { margin-bottom: 0.25rem; }
     .flags { font-size: 0.85rem; color: #b45309; margin-top: 0.5rem; }
   </style>
 </head>
@@ -191,14 +191,40 @@
             <div class="field-label">Riskiest Assumption</div>
             <div class="field-value">${exp.riskiest_assumption || '<span class="empty">—</span>'}</div>
           </div>
+          ${exp.riskiest_assumptions?.length ? `
           <div class="field">
-            <div class="field-label">Experiment</div>
+            <div class="field-label">All Risky Assumptions</div>
+            <ul class="list">
+              ${exp.riskiest_assumptions.map(a => `<li>${a}</li>`).join('')}
+            </ul>
+          </div>
+          ` : ''}
+          <div class="field">
+            <div class="field-label">Recommended Experiment</div>
             <div class="field-value">${exp.recommended_experiment || '<span class="empty">—</span>'}</div>
           </div>
+          ${exp.full_test_sequence ? `
+          <div class="field">
+            <div class="field-label">Full Test Sequence</div>
+            <div class="field-value">${exp.full_test_sequence}</div>
+          </div>
+          ` : ''}
           <div class="field">
             <div class="field-label">Pass/Fail Criterion</div>
             <div class="field-value">${exp.pass_fail_criterion || '<span class="empty">—</span>'}</div>
           </div>
+          ${exp.decision_criteria ? `
+          <div class="field">
+            <div class="field-label">Decision Criteria</div>
+            <div class="field-value">${exp.decision_criteria}</div>
+          </div>
+          ` : ''}
+          ${exp.upstream_assumption ? `
+          <div class="field">
+            <div class="field-label">Upstream Assumption</div>
+            <div class="field-value">${exp.upstream_assumption}</div>
+          </div>
+          ` : ''}
           ${exp.result ? `
           <div class="field">
             <div class="field-label">Result</div>
@@ -217,7 +243,7 @@
             <div class="field-value">${exp.next_action}${exp.next_action_notes ? ': ' + exp.next_action_notes : ''}</div>
           </div>
           ` : ''}
-          <div class="meta">Created ${formatDate(exp.created_at)}${exp.week_of ? ' · Week of ' + exp.week_of : ''}</div>
+          <div class="meta">Created ${formatDate(exp.created_at)}${exp.week_of ? ' · Week of ' + exp.week_of : ''}${exp.created_by ? ' · via ' + exp.created_by : ''}</div>
         </div>
       `).join('');
     }
@@ -233,6 +259,12 @@
           <div class="card-header">
             <span class="card-id">${ref.id}</span>
           </div>
+          ${ref.experiment_results_summary ? `
+          <div class="field">
+            <div class="field-label">Experiment Results</div>
+            <div class="field-value">${ref.experiment_results_summary}</div>
+          </div>
+          ` : ''}
           <div class="field">
             <div class="field-label">Key Learning</div>
             <div class="field-value">${ref.key_learning || '<span class="empty">—</span>'}</div>
@@ -263,6 +295,12 @@
           <div class="card-header">
             <span class="card-id">${sprint.id}</span>
           </div>
+          ${sprint.summary ? `
+          <div class="field">
+            <div class="field-label">Summary</div>
+            <div class="field-value">${sprint.summary}</div>
+          </div>
+          ` : ''}
           <div class="field">
             <div class="field-label">Focus Area</div>
             <div class="field-value">${sprint.focus_area || '<span class="empty">—</span>'}</div>
@@ -271,6 +309,24 @@
             <div class="field-label">Problem (inferred)</div>
             <div class="field-value">${sprint.problem_inferred || '<span class="empty">—</span>'}</div>
           </div>
+          ${sprint.new_features ? `
+          <div class="field">
+            <div class="field-label">New Features</div>
+            <div class="field-value">${sprint.new_features}</div>
+          </div>
+          ` : ''}
+          ${sprint.bug_fixes ? `
+          <div class="field">
+            <div class="field-label">Bug Fixes & Improvements</div>
+            <div class="field-value">${sprint.bug_fixes}</div>
+          </div>
+          ` : ''}
+          ${sprint.experiment_alignment ? `
+          <div class="field">
+            <div class="field-label">Experiment Alignment</div>
+            <div class="field-value">${sprint.experiment_alignment}</div>
+          </div>
+          ` : ''}
           <div class="meta">
             ${sprint.week_start} → ${sprint.week_end} · 
             ${sprint.commit_count} commits · 
@@ -296,20 +352,56 @@
             <div class="field-label">PRD</div>
             <div class="field-value card-title">${prd.prd_title || '<span class="empty">—</span>'}</div>
           </div>
+          ${prd.argument_chain ? `
+          <div class="field">
+            <div class="field-label">Argument Chain</div>
+            <div class="field-value">${prd.argument_chain}</div>
+          </div>
+          ` : ''}
+          ${prd.real_job ? `
+          <div class="field">
+            <div class="field-label">Real Job</div>
+            <div class="field-value">${prd.real_job}</div>
+          </div>
+          ` : ''}
+          ${prd.load_bearing_assumptions ? `
+          <div class="field">
+            <div class="field-label">Load-Bearing Assumptions</div>
+            <div class="field-value">${prd.load_bearing_assumptions}</div>
+          </div>
+          ` : ''}
           <div class="field">
             <div class="field-label">Weakest Assumption</div>
             <div class="field-value">${prd.weakest_assumption || '<span class="empty">—</span>'}</div>
           </div>
+          ${prd.motivated_reasoning_flags?.length ? `
+          <div class="flags">⚠ Motivated Reasoning: ${prd.motivated_reasoning_flags.join(' · ')}</div>
+          ` : ''}
+          ${prd.conviction_vs_evidence ? `
+          <div class="field">
+            <div class="field-label">Conviction vs. Evidence</div>
+            <div class="field-value">${prd.conviction_vs_evidence}</div>
+          </div>
+          ` : ''}
+          ${prd.moonshot_alternatives ? `
+          <div class="field">
+            <div class="field-label">Moonshot Alternatives</div>
+            <div class="field-value">${prd.moonshot_alternatives}</div>
+          </div>
+          ` : ''}
+          ${prd.pre_mortem ? `
+          <div class="field">
+            <div class="field-label">Pre-Mortem</div>
+            <div class="field-value">${prd.pre_mortem}</div>
+          </div>
+          ` : ''}
           ${prd.recommendations?.length ? `
           <div class="field">
             <div class="field-label">Recommendations</div>
-            <ul class="recommendations">
+            <ul class="list">
               ${prd.recommendations.map(r => `<li>${r}</li>`).join('')}
             </ul>
           </div>
-          ` : ''}
-          ${prd.motivated_reasoning_flags?.length ? `
-          <div class="flags">⚠ ${prd.motivated_reasoning_flags.join(' · ')}</div>
           ` : ''}
           <div class="meta">Reviewed ${formatDate(prd.created_at)}</div>
         </div>
