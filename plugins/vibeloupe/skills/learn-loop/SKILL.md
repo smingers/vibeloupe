@@ -103,6 +103,24 @@ Target: 400–700 words. Reflection sessions should be shorter than planning ses
 }
 ```
 
+## Reflection Record Schema
+
+After updating individual experiments, save the week-level synthesis to `.vibeloupe/reflections.json`:
+
+```json
+{
+  "id": "refl_[YYYYMMDD of Monday]",
+  "created_at": "[ISO 8601 datetime]",
+  "week_of": "[ISO date of the Monday of the week]",
+  "key_learning": "[one-sentence synthesis: what changed and why]",
+  "next_steps_summary": "[carry/pivot/abandon summary for all threads]",
+  "pattern_note": "[cross-week pattern, if any] | null",
+  "experiment_ids": ["exp_...", "exp_..."]
+}
+```
+
+If a reflection for the same `week_of` already exists, replace it.
+
 ## Reference Files
 
 - **`references/reflection-framework.md`** — Full planning intake process, reflection debriefing questions, cross-week pattern detection, and output format templates

@@ -1,5 +1,5 @@
 ---
-description: Run a weekly Build-Measure-Learn session. Plans this week's learning experiments with falsifiable hypotheses and pass/fail criteria, or debriefs last week's results and captures what actually changed in your beliefs. Reads and writes .vibeloupe/experiments.json.
+description: Run a weekly Build-Measure-Learn session. Plans this week's learning experiments with falsifiable hypotheses and pass/fail criteria, or debriefs last week's results and captures what actually changed in your beliefs. Reads and writes .vibeloupe/experiments.json and .vibeloupe/reflections.json.
 argument-hint: "[Optional: 'plan' to start a planning session, 'reflect' to start a reflection session, or leave blank to auto-detect]"
 ---
 
@@ -39,6 +39,7 @@ Check if `.vibeloupe/experiments.json` exists in the working directory.
 5. If experiments span 3+ weeks, check for cross-week patterns and surface any you find.
 6. Output results using the reflection session format from the **learn-loop** skill.
 7. Update `.vibeloupe/experiments.json`: find each experiment by `id`, update the result fields using the reflection schema from the **learn-loop** skill. Read the file, update matching records in-place, write back.
+8. Save the week-level synthesis to `.vibeloupe/reflections.json`: read the file (create with `[]` if it doesn't exist), upsert a reflection record for the current week using the reflection record schema from the **learn-loop** skill. If a record with the same `week_of` exists, replace it. After saving, confirm: "Saved to your Vibeloupe log."
 
 ## Rules
 
@@ -48,4 +49,5 @@ Check if `.vibeloupe/experiments.json` exists in the working directory.
 - If the user's "learning" contains no new evidence: "That's your prior belief restated. What did you actually observe?"
 - Do not ask all questions at once — debrief each experiment before moving to the next
 - Always write to `.vibeloupe/experiments.json` at the end of the session — an unlogged session didn't happen
+- In reflection mode, always write to `.vibeloupe/reflections.json` — the week-level synthesis is as important as the individual experiment updates
 - Reflection must reference the original hypothesis exactly as written, not a softened version
