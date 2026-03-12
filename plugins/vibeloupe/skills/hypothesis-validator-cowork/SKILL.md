@@ -1,5 +1,5 @@
 ---
-name: hypothesis-validator
+name: hypothesis-validator-cowork
 description: Use when the user says "validate my hypothesis", "test my idea", "I want to build X", "should I build this", "is there a market for this", "help me with customer development", "validate this problem", "how do I test this assumption", "I think people have a problem with", "I'm thinking of starting a company that", "help me do product discovery", "I have an idea", or describes an idea or problem they want to test before building.
 version: 0.2.20
 ---
@@ -50,47 +50,6 @@ Risk score = likelihood × consequence. Surface only assumptions scoring 4 or hi
 
 Target length: 600–1000 words. A tightly scoped hypothesis earns a shorter plan.
 
-## Experiment Schema
-
-```json
-{
-  "id": "exp_[ISO timestamp without separators, e.g. 20260311T143022]",
-  "created_at": "[ISO 8601 datetime]",
-  "updated_at": "[ISO 8601 datetime]",
-  "created_by": "hypothesis-validator",
-  "hypothesis": "[falsifiable hypothesis statement]",
-  "riskiest_assumption": "[the #1 riskiest assumption]",
-  "riskiest_assumptions": ["[assumption 1]", "[assumption 2]", "..."],
-  "recommended_experiment": "[full recommended first experiment content; include time estimate as prose]",
-  "full_test_sequence": "[full test sequence narrative — all experiments in order]",
-  "pass_fail_criterion": "[explicit pass and fail criteria]",
-  "decision_criteria": "[full decision criteria narrative — what to do if pass/fail/ambiguous]",
-  "status": "untested",
-  "week_of": "[ISO date of the Monday of the current week]",
-  "result": null,
-  "result_recorded_at": null,
-  "learnings": null,
-  "next_action": null,
-  "next_action_notes": null
-}
-```
-
-## JSON Consistency
-
-JSON fields must be word-for-word copies of the corresponding chat sections:
-
-| JSON field | Chat section |
-|---|---|
-| `hypothesis` | ### 🎯 HYPOTHESIS |
-| `riskiest_assumption` | First assumption from ### ⚠️ RISKIEST ASSUMPTIONS |
-| `riskiest_assumptions` | All assumptions listed in ### ⚠️ RISKIEST ASSUMPTIONS |
-| `recommended_experiment` | ### 🧪 RECOMMENDED FIRST EXPERIMENT (full content) |
-| `full_test_sequence` | ### 📋 FULL TEST SEQUENCE |
-| `pass_fail_criterion` | Pass/fail criteria from ### 🧪 RECOMMENDED FIRST EXPERIMENT |
-| `decision_criteria` | ### 🚦 DECISION CRITERIA |
-
-Do not paraphrase, shorten, or rewrite. Copy the exact text.
-
 ## Critical Rules
 
 - Never ask all clarifying questions at once if the input is already rich
@@ -103,4 +62,4 @@ Do not paraphrase, shorten, or rewrite. Copy the exact text.
 
 ## Reference Files
 
-- **`references/validation-framework.md`** — Full signal detection criteria, clarifying question bank, hypothesis crystallization templates, risk ranking methodology, experiment types with Mom Test coaching, and output format templates
+- **`../hypothesis-validator/references/validation-framework.md`** — Full signal detection criteria, clarifying question bank, hypothesis crystallization templates, risk ranking methodology, experiment types with Mom Test coaching, and output format templates

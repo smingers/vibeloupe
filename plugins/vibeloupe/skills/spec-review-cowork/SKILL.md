@@ -1,5 +1,5 @@
 ---
-name: spec-review
+name: spec-review-cowork
 description: This skill should be used when the user asks to "analyze this PRD", "review my PRD", "pressure-test this PRD", "critique this product spec", "give me feedback on this PRD", "analyze this product requirements document", or pastes a PRD or product spec and asks for analysis, feedback, or review. Provides sharp, opinionated strategic analysis of PRDs using an 8-section analytical framework.
 version: 0.2.20
 ---
@@ -12,7 +12,7 @@ A sharp, opinionated product strategist — VP of Product who has shipped at sca
 
 ## 8 Analytical Lenses
 
-Full detail on each lens is in `references/analytical-framework.md`. Summary:
+Full detail on each lens is in `../spec-review/references/analytical-framework.md`. Summary:
 
 1. **Argument Chain Analysis** — Rate each link in the logical chain. Identify the weakest link and explain why.
 2. **Jobs to Be Done Reframe** — Is the PRD solving the real job or an adjacent one?
@@ -38,49 +38,6 @@ Full detail on each lens is in `references/analytical-framework.md`. Summary:
 
 Target: 800–1200 words. A strong PRD earns a shorter analysis.
 
-## PRD Review Schema
-
-```json
-{
-  "id": "prd_[ISO timestamp without separators, e.g. 20260311T143022]",
-  "created_at": "[ISO 8601 datetime]",
-  "prd_title": "[PRD title or feature name]",
-  "argument_chain": "[full argument chain analysis — each link rated, weakest link identified]",
-  "real_job": "[jobs to be done reframe — is the PRD solving the real job?]",
-  "load_bearing_assumptions": "[full hidden assumptions audit — all 2-3 assumptions with cheapest tests]",
-  "weakest_assumption": "[the single weakest load-bearing assumption identified]",
-  "motivated_reasoning_flags": ["[bias pattern]", "..."],
-  "conviction_vs_evidence": "[mismatches where confidence exceeds supporting evidence]",
-  "moonshot_alternatives": "[1-2 fundamentally different approaches to the same problem]",
-  "pre_mortem": "[predicted outcome, success mechanisms, failure narratives, 30-day watchpoints]",
-  "recommendations": [
-    "[Recommendation 1]",
-    "[Recommendation 2]",
-    "[Recommendation 3]"
-  ]
-}
-```
-
-Use `[]` for `motivated_reasoning_flags` if none were identified. Use `null` for any section that had no issues.
-
-## JSON Consistency
-
-JSON fields must be word-for-word copies of the corresponding chat sections:
-
-| JSON field | Chat section |
-|---|---|
-| `argument_chain` | ### 🔗 ARGUMENT CHAIN |
-| `real_job` | ### 🎯 REAL JOB |
-| `load_bearing_assumptions` | ### 🧱 LOAD-BEARING ASSUMPTIONS |
-| `weakest_assumption` | First/weakest assumption from ### 🧱 LOAD-BEARING ASSUMPTIONS |
-| `motivated_reasoning_flags` | Extracted bias pattern names from ### 🧠 MOTIVATED REASONING FLAGS |
-| `conviction_vs_evidence` | ### 🎚️ CONVICTION vs. EVIDENCE |
-| `moonshot_alternatives` | ### 🚀 MOONSHOT ALTERNATIVES |
-| `pre_mortem` | ### 💀 PRE-MORTEM |
-| `recommendations` | Extracted from ### ✅ TOP 3 RECOMMENDATIONS |
-
-Do not paraphrase, shorten, or rewrite. Copy the exact text.
-
 ## Critical Rules
 
 - Never comment on formatting, template compliance, or document structure
@@ -91,4 +48,4 @@ Do not paraphrase, shorten, or rewrite. Copy the exact text.
 
 ## Reference Files
 
-- **`references/analytical-framework.md`** — Full detail on all 8 lenses: what to look for, how to rate, what to flag, and output format templates
+- **`../spec-review/references/analytical-framework.md`** — Full detail on all 8 lenses: what to look for, how to rate, what to flag, and output format templates

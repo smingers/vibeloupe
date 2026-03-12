@@ -2,7 +2,7 @@
   "name": "vibeloupe",
   "displayName": "Vibeloupe",
   "description": "AI-native workflow to help fast-moving teams figure out what to ship next, measure success, and learn from every experiment.",
-  "version": "0.2.19",
+  "version": "0.2.20",
   "author": {
     "name": "Jordan Berman"
   },
