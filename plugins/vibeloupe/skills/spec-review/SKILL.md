@@ -1,7 +1,7 @@
 ---
 name: spec-review
 description: This skill should be used when the user asks to "analyze this PRD", "review my PRD", "pressure-test this PRD", "critique this product spec", "give me feedback on this PRD", "analyze this product requirements document", or pastes a PRD or product spec and asks for analysis, feedback, or review. Provides sharp, opinionated strategic analysis of PRDs using an 8-section analytical framework.
-version: 0.2.17
+version: 0.2.19
 ---
 
 # PRD Analyzer
@@ -62,6 +62,24 @@ Target: 800–1200 words. A strong PRD earns a shorter analysis.
 ```
 
 Use `[]` for `motivated_reasoning_flags` if none were identified. Use `null` for any section that had no issues.
+
+## JSON Consistency
+
+JSON fields must be word-for-word copies of the corresponding chat sections:
+
+| JSON field | Chat section |
+|---|---|
+| `argument_chain` | ### 🔗 ARGUMENT CHAIN |
+| `real_job` | ### 🎯 REAL JOB |
+| `load_bearing_assumptions` | ### 🧱 LOAD-BEARING ASSUMPTIONS |
+| `weakest_assumption` | First/weakest assumption from ### 🧱 LOAD-BEARING ASSUMPTIONS |
+| `motivated_reasoning_flags` | Extracted bias pattern names from ### 🧠 MOTIVATED REASONING FLAGS |
+| `conviction_vs_evidence` | ### 🎚️ CONVICTION vs. EVIDENCE |
+| `moonshot_alternatives` | ### 🚀 MOONSHOT ALTERNATIVES |
+| `pre_mortem` | ### 💀 PRE-MORTEM |
+| `recommendations` | Extracted from ### ✅ TOP 3 RECOMMENDATIONS |
+
+Do not paraphrase, shorten, or rewrite. Copy the exact text.
 
 ## Critical Rules
 

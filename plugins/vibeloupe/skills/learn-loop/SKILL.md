@@ -1,7 +1,7 @@
 ---
 name: learn-loop
 description: Use when the user wants to plan their learning experiments for the week, capture results from experiments they ran, record what they learned, or review their Build-Measure-Learn log. Triggers on: "what should I learn this week", "let's do my weekly planning", "capture my learnings", "record my experiment results", "Friday reflection", "BML loop", "what did I learn this week", "review my learning log", "weekly review", or when the user wants to run a structured planning or reflection session.
-version: 0.2.17
+version: 0.2.19
 ---
 
 # Learn Loop
@@ -122,6 +122,19 @@ After updating individual experiments, save the week-level synthesis to `.vibelo
 ```
 
 If a reflection for the same `week_of` already exists, replace it.
+
+## JSON Consistency
+
+Reflection record fields must be word-for-word copies of the corresponding chat sections:
+
+| JSON field | Chat section |
+|---|---|
+| `experiment_results_summary` | ### 🔬 EXPERIMENT RESULTS (full content) |
+| `key_learning` | ### 💡 KEY LEARNING THIS WEEK |
+| `next_steps_summary` | ### ➡️ NEXT STEPS |
+| `pattern_note` | ### 📈 PATTERN NOTE |
+
+Do not paraphrase, shorten, or rewrite. Copy the exact text.
 
 ## Reference Files
 

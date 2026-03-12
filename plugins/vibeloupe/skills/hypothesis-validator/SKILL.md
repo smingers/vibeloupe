@@ -1,7 +1,7 @@
 ---
 name: hypothesis-validator
 description: Use when the user says "validate my hypothesis", "test my idea", "I want to build X", "should I build this", "is there a market for this", "help me with customer development", "validate this problem", "how do I test this assumption", "I think people have a problem with", "I'm thinking of starting a company that", "help me do product discovery", "I have an idea", or describes an idea or problem they want to test before building.
-version: 0.2.17
+version: 0.2.19
 ---
 
 # Hypothesis Validator
@@ -58,10 +58,10 @@ Target length: 600–1000 words. A tightly scoped hypothesis earns a shorter pla
   "created_at": "[ISO 8601 datetime]",
   "updated_at": "[ISO 8601 datetime]",
   "created_by": "hypothesis-validator",
-  "hypothesis": "[one-line falsifiable hypothesis statement]",
+  "hypothesis": "[falsifiable hypothesis statement]",
   "riskiest_assumption": "[the #1 riskiest assumption]",
   "riskiest_assumptions": ["[assumption 1]", "[assumption 2]", "..."],
-  "recommended_experiment": "[one sentence describing the recommended first experiment; include time estimate as prose]",
+  "recommended_experiment": "[full recommended first experiment content; include time estimate as prose]",
   "full_test_sequence": "[full test sequence narrative — all experiments in order]",
   "pass_fail_criterion": "[explicit pass and fail criteria]",
   "decision_criteria": "[full decision criteria narrative — what to do if pass/fail/ambiguous]",
@@ -74,6 +74,22 @@ Target length: 600–1000 words. A tightly scoped hypothesis earns a shorter pla
   "next_action_notes": null
 }
 ```
+
+## JSON Consistency
+
+JSON fields must be word-for-word copies of the corresponding chat sections:
+
+| JSON field | Chat section |
+|---|---|
+| `hypothesis` | ### 🎯 HYPOTHESIS |
+| `riskiest_assumption` | First assumption from ### ⚠️ RISKIEST ASSUMPTIONS |
+| `riskiest_assumptions` | All assumptions listed in ### ⚠️ RISKIEST ASSUMPTIONS |
+| `recommended_experiment` | ### 🧪 RECOMMENDED FIRST EXPERIMENT (full content) |
+| `full_test_sequence` | ### 📋 FULL TEST SEQUENCE |
+| `pass_fail_criterion` | Pass/fail criteria from ### 🧪 RECOMMENDED FIRST EXPERIMENT |
+| `decision_criteria` | ### 🚦 DECISION CRITERIA |
+
+Do not paraphrase, shorten, or rewrite. Copy the exact text.
 
 ## Critical Rules
 

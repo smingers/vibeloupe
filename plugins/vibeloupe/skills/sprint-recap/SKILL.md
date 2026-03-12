@@ -1,7 +1,7 @@
 ---
 name: sprint-recap
 description: Use when the user wants to understand what the team built or worked on recently, get a weekly summary of git activity, reconstruct the team's goals from recent commits, or produce a changelog from a product perspective. Triggers on phrases like "what did we ship this week", "sprint recap", "week in review", "summarize our commits", "what was the team working on", "what changed this week", "generate a changelog", "what did we build", "show me recent progress", or any request to understand recent engineering work through a user or product lens. Use this whenever someone asks about recent work or recent changes in a project — even if they don't say "sprint" or "git".
-version: 0.2.17
+version: 0.2.19
 ---
 
 # Sprint Recap
@@ -93,7 +93,7 @@ Omit **New Features**, **Bug Fixes & Improvements**, or **Experiment Alignment**
   "week_start": "[ISO date, e.g. 2026-03-04]",
   "week_end": "[ISO date, e.g. 2026-03-10]",
   "summary": "[2-3 sentence summary — what area saw the most work]",
-  "problem_inferred": "[1–2 sentence inference — what problem is the team solving]",
+  "problem_inferred": "[3–5 sentence inference — what problem is the team solving]",
   "new_features": "[itemized new features narrative] | null",
   "bug_fixes": "[itemized bug fixes & improvements narrative] | null",
   "experiment_alignment": "[full experiment alignment narrative — advances/drifting for each] | null",
@@ -104,6 +104,20 @@ Omit **New Features**, **Bug Fixes & Improvements**, or **Experiment Alignment**
   "linked_experiment_ids": ["[id of each experiment rated Advances]"]
 }
 ```
+
+## JSON Consistency
+
+JSON fields must be word-for-word copies of the corresponding chat sections:
+
+| JSON field | Chat section |
+|---|---|
+| `summary` | ## Summary |
+| `problem_inferred` | ## What Problem Is The Team Solving? |
+| `new_features` | ## New Features (full itemized content) |
+| `bug_fixes` | ## Bug Fixes & Improvements (full itemized content) |
+| `experiment_alignment` | ## Experiment Alignment (full content) |
+
+Do not paraphrase, shorten, or rewrite. Copy the exact text.
 
 ## Rules
 
